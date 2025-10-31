@@ -1,3 +1,5 @@
+web-gtm-sandboxed-apis.d.ts
 node_modules/
-.DS_Store/
-playground/
+**/.DS_Store
+playground/*
+!playground/playground.html
