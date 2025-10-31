@@ -14,7 +14,7 @@ This tag automatically extracts user PII (email, phone, name, etc.) from a webpa
 
 ## How to use it
 
-1.  Add the **User Data Extractor From Page** tag to your GTM container from the Community Template Gallery.
+1.  Add the **User Data Extractor From Page** tag to your GTM container by importing the `template.tpl` file or from the Community Template Gallery.
 2.  Create a new tag in your workspace and select the "User Data Extractor From Page" tag.
 3.  Configure the settings as described below.
 4.  Set up a trigger for when you want the extraction to run (e.g., on page views, after a form interaction, or on a custom event).
@@ -35,11 +35,11 @@ Select the checkboxes for the user data you wish to extract from the page.
 
 ### Extraction Settings
 
--   **Save user_data information into the browser Storage**:
+-   **Save `user_data` information into the browser Storage**:
     -   **Storage Type**: Choose `Session Storage` (data persists for the page session) or `Local Storage` (data persists until cleared).
     -   **Storage Key**: The key used to store the data. Defaults to `gtm_user_data`.
 
--   **Push an event to the dataLayer with user_data information**:
+-   **Push an event to the dataLayer with `user_data` information**:
     -   **Data Layer Event Name**: The name of the event pushed to the dataLayer. Defaults to `user_data_detected`.
     -   **Data Layer Array Name**: The name of your dataLayer. Defaults to `dataLayer`.
 
