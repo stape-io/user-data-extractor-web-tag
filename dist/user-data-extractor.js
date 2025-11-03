@@ -1,8 +1,9 @@
-/*! @stape-io/user-data-extractor v1.0.0 | 2025-10-31T14:55:01.648Z */
+/*! @stape-io/user-data-extractor v1.0.0 | 2025-11-03T17:58:46.888Z */
 var extractUserDataAuto = (function () {
   'use strict';
 
   let isSubmitClickListenerAdded = false;
+  let isSubmitFormListenerAdded = false;
 
   /**
    * User Data Auto-Extraction Module (DOM Scan)
@@ -19,6 +20,10 @@ var extractUserDataAuto = (function () {
    * @param {boolean} [options.extract.postal_code=false] - Extract postal codes.
    * @param {boolean} [options.extract.first_name=false] - Extract first names.
    * @param {boolean} [options.extract.last_name=false] - Extract last names.
+   * @param {boolean} [options.overrideExistingUserData=false] - Determines if the already existing captured user data should be overriden with the newly captured values.
+   * @param {object} [options.autoTrackSpecificForms] - Configuration for autotracking <form> HTML element submits.
+   * @param {boolean} [options.autoTrackSpecificForms.enabled=false] - If true, automatically adds a listener to re-run extraction on <form> HTML element submits.
+   * @param {string|null} [options.autoTrackSpecificForms.formSelector=null] - If set, the submit listener will listener for submit at elements that matches the specified CSS selector.
    * @param {object} [options.autoTrackSpecificClicks] - Configuration for autotracking type="submit" <button> and <input> HTML element clicks.
    * @param {boolean} [options.autoTrackSpecificClicks.enabled=false] - If true, automatically adds a listener to re-run extraction on type="submit" <button> and <input> HTML element clicks.
    * @param {string|null} [options.autoTrackSpecificClicks.buttonClickSelector=null] - If set, the click listener will listener for click at elements that matches the specified CSS selector.
@@ -52,6 +57,7 @@ var extractUserDataAuto = (function () {
           first_name: false,
           last_name: false
         },
+        overrideExistingUserData: false,
         pushToDataLayer: {
           enabled: false,
           event: 'user_data_detected',
@@ -60,6 +66,10 @@ var extractUserDataAuto = (function () {
         autoTrackSpecificClicks: {
           enabled: false,
           buttonClickSelector: null
+        },
+        autoTrackSpecificForms: {
+          enabled: false,
+          formSelector: null
         },
         saveIntoStorage: {
           enabled: false,
@@ -76,6 +86,10 @@ var extractUserDataAuto = (function () {
           ...defaults.autoTrackSpecificClicks,
           ...(options.autoTrackSpecificClicks || {})
         },
+        autoTrackSpecificForms: {
+          ...defaults.autoTrackSpecificForms,
+          ...(options.autoTrackSpecificForms || {})
+        },
         saveIntoStorage: {
           ...defaults.saveIntoStorage,
           ...(options.saveIntoStorage || {})
@@ -83,8 +97,17 @@ var extractUserDataAuto = (function () {
       };
 
       addSubmitClickListener(config);
+      addSubmitFormListener(config);
 
-      const userData = runUserDataExtraction(config);
+      const newUserData = runUserDataExtraction(config);
+      const userDataFromStorage = getFromStorage(config);
+      const updatedUserData =
+        { ...extractUserDataAuto.userData, ...userDataFromStorage, ...newUserData } || {};
+
+      const userData = (extractUserDataAuto.userData = config.overrideExistingUserData
+        ? newUserData
+        : updatedUserData);
+
       pushToDataLayer(userData, config);
       saveIntoStorage(userData, config);
 
@@ -202,6 +225,27 @@ var extractUserDataAuto = (function () {
     }
   }
 
+  function getFromStorage(config) {
+    try {
+      const {
+        saveIntoStorage: { enabled, type = 'session', key = 'gtm_user_data' }
+      } = config;
+      const storageByType = {
+        session: window.sessionStorage,
+        local: window.localStorage
+      };
+
+      if (!enabled) return;
+
+      const storage = storageByType[type];
+      const userDataStringified = storage.getItem(key);
+      if (!userDataStringified) return;
+      return JSON.parse(userDataStringified);
+    } catch (e) {
+      console.error('Error in getFromStorage:', e);
+    }
+  }
+
   function addSubmitClickListener(config) {
     try {
       const {
@@ -224,6 +268,38 @@ var extractUserDataAuto = (function () {
             }
           } catch (e) {
             console.error('Error in addSubmitClickListener click event handler:', e);
+          }
+        },
+        true
+      );
+
+      isSubmitClickListenerAdded = true;
+    } catch (e) {
+      console.error('Error in addSubmitClickListener:', e);
+    }
+  }
+
+  function addSubmitFormListener(config) {
+    try {
+      const {
+        autoTrackSpecificForms: { enabled, formSelector }
+      } = config;
+
+      if (!enabled || isSubmitFormListenerAdded) return;
+
+      document.addEventListener(
+        'submit',
+        (event) => {
+          try {
+            const formCSSSelector = formSelector || 'form';
+            const target = event.target;
+            const form = target.closest(formCSSSelector);
+
+            if (form) {
+              extractUserDataAuto({ ...config, root: form || document });
+            }
+          } catch (e) {
+            console.error('Error in addSubmitFormListener click event handler:', e);
           }
         },
         true
