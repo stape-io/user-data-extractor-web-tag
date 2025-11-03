@@ -264,7 +264,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "scriptUrl",
         "displayName": "Script URL",
         "simpleValueType": true,
-        "defaultValue": "https://cdn.stape.io/user-data-extractor/${script-version}.js",
+        "defaultValue": "https://stapecdn.com/user-data-extractor/${script-version}.js",
         "valueValidators": [
           {
             "type": "NON_EMPTY"
@@ -276,7 +276,7 @@ ___TEMPLATE_PARAMETERS___
             ]
           }
         ],
-        "help": "The URL load script from.\n\u003cbr/\u003e\nBy default it will be loaded from \u003ci\u003ehttps://cdn.stape.io/user-data-extractor/${script-version}.js\u003c/i\u003e.\n\u003cbr/\u003e\nIf the \u003ci\u003e${script-version}\u003c/i\u003e is left as is, the tag will always try to load the latest version. Otherwise, you can specify a specific version in its place, such as: \u003ci\u003ev1\u003ci\u003e."
+        "help": "The URL load script from.\n\u003cbr/\u003e\nBy default it will be loaded from \u003ci\u003ehttps://stapecdn.com/user-data-extractor/${script-version}.js\u003c/i\u003e.\n\u003cbr/\u003e\nIf the \u003ci\u003e${script-version}\u003c/i\u003e is left as is, the tag will always try to load the latest version. Otherwise, you can specify a specific version in its place, such as: \u003ci\u003ev1\u003ci\u003e."
       }
     ]
   },
@@ -388,9 +388,9 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
 function getScriptUrl(data) {
   const scriptVersion = 'v1';
   const scriptUrl =
-    typeof data.scriptUrl !== 'undefined'
+    getType(data.scriptUrl) === 'string'
       ? data.scriptUrl.replace('${script-version}', scriptVersion)
-      : 'https://cdn.stape.io/user-data-extractor/' + scriptVersion + '.js';
+      : 'https://stapecdn.com/user-data-extractor/' + scriptVersion + '.js';
   return scriptUrl;
 }
 
@@ -805,7 +805,7 @@ setup: "const JSON = require('JSON');\nconst Object = require('Object');\n\nfunc
   \ true,\n    saveIntoStorageType: 'session',\n    saveIntoStorageKey: 'gtm_user_data',\n\
   \    autoTrackSpecificClicks: true,\n    autoTrackSpecificClicksSelector: 'a.submit',\n\
   \    overrideRootElement: true,\n    overrideRootElementElement: 'test',\n    scriptUrl:\
-  \ 'https://sst.stape.men/user-data-extractor.js',\n    logType: 'debug'\n  };\n\
+  \ 'https://stapecdn.com/user-data-extractor/v1.js',\n    logType: 'debug'\n  };\n\
   \  \n  mergeObj(base, objToBeMerged || {});\n  mergeObj(mockData, base);\n  return\
   \ mockData;\n};\n\nmock('copyFromWindow', (key) => {\n  if (key === scriptGlobalFlagName)\
   \ {\n    return { };\n  }\n});\n\nmock('injectScript', (scriptUrl, successHandler,\

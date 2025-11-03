@@ -73,9 +73,9 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
 function getScriptUrl(data) {
   const scriptVersion = 'v1';
   const scriptUrl =
-    typeof data.scriptUrl !== 'undefined'
+    getType(data.scriptUrl) === 'string'
       ? data.scriptUrl.replace('${script-version}', scriptVersion)
-      : 'https://cdn.stape.io/user-data-extractor/' + scriptVersion + '.js';
+      : 'https://stapecdn.com/user-data-extractor/' + scriptVersion + '.js';
   return scriptUrl;
 }
 
