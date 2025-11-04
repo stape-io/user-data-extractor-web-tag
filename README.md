@@ -1,4 +1,4 @@
-# User Data Extractor Tag for Google Tag Manager Web
+# User Data Collection Tag for Google Tag Manager Web
 
 This tag automatically extracts user PII (email, phone, name, etc.) from a webpage's DOM. It intelligently identifies form fields, normalizes the data, and can push the results to the dataLayer or browser storage. This is particularly useful for populating `user_data` parameters for various advertising and analytics tags.
 
@@ -14,7 +14,7 @@ This tag automatically extracts user PII (email, phone, name, etc.) from a webpa
 
 ## How to use it
 
-1.  Add the **User Data Extractor From Page** tag to your GTM container by importing the `template.tpl` file or from the Community Template Gallery.
+1.  Add the **User Data Collection From Page** tag to your GTM container by importing the `template.tpl` file or from the Community Template Gallery.
 2.  Create a new tag in your workspace and select the "User Data Extractor From Page" tag.
 3.  Configure the settings as described below.
 4.  Set up a trigger for when you want the extraction to run (e.g., on page views, after a form interaction, or on a custom event).
@@ -43,16 +43,22 @@ Select the checkboxes for the user data you wish to extract from the page.
     -   **Data Layer Event Name**: The name of the event pushed to the dataLayer. Defaults to `user_data_detected`.
     -   **Data Layer Array Name**: The name of your dataLayer. Defaults to `dataLayer`.
 
--   **Automatically track clicks at specific HTML elements**:
+-   **Automatically track clicks clicks at specific type="submit" `<button>` and `<input>` HTML elements**:
     -   **Auto Track Submit Clicks Override CSS Selector**: Specify a CSS selector for elements that should trigger data extraction on click. If left blank, it defaults to `button[type="submit"]` and `input[type="submit"]`.
+
+-   **Automatically track submit events on `< form>` HTML elements**:
+    -   **Auto Track Submit Events Override CSS Selector**: Specify a CSS selector for elements that should trigger data extraction on submit event. If left blank, it defaults to `form`.
 
 -   **Override the root HTML element to scan within**:
     -   **Overridden root HTML element**: Provide a GTM variable that returns an HTML element. The tag will only scan within this element. By default, it scans the entire `document`.
 
+-   **Override the already captured user data with the newly captured values**:
+    - If enabled, the existing `user_data` information will be overridden with the newly captured information (if valid). Otherwise, it will be merged with the already existing one with the new `user_data` information taking precedence.
+
 ### More Settings
 
 -   **Script URL**: The URL from which to load the extractor script.
-    -   The default URL is `https://cdn.stape.io/user-data-extractor/${script-version}.js`.
+    -   The default URL is `https://stapecdn.com/udc/${script-version}.js`.
     -   The `${script-version}` placeholder ensures you always use the latest version. You can replace it with a specific version (e.g., `v1`) to lock it.
 
 ### Logs Settings
@@ -65,4 +71,4 @@ Control the verbosity of the tag's logging in the browser's developer console.
 
 ## Open Source
 
-The **User Data Extractor Tag for GTM Web** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
+The **User Data Collection Tag for GTM Web** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
