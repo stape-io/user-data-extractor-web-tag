@@ -1,4 +1,4 @@
-# User Data Collection Tag for Google Tag Manager Web
+# User Data Collector Tag for Google Tag Manager Web
 
 This tag automatically extracts user PII (email, phone, name, etc.) from a webpage's DOM. It intelligently identifies form fields, normalizes the data, and can push the results to the dataLayer or browser storage. This is particularly useful for populating `user_data` parameters for various advertising and analytics tags.
 
@@ -14,7 +14,7 @@ This tag automatically extracts user PII (email, phone, name, etc.) from a webpa
 
 ## How to use it
 
-1.  Add the **User Data Collection From Page** tag to your GTM container by importing the `template.tpl` file or from the Community Template Gallery.
+1.  Add the **User Data Collector From Page** tag to your GTM container by importing the `template.tpl` file or from the Community Template Gallery.
 2.  Create a new tag in your workspace and select the "User Data Extractor From Page" tag.
 3.  Configure the settings as described below.
 4.  Set up a trigger for when you want the extraction to run (e.g., on page views, after a form interaction, or on a custom event).
@@ -71,4 +71,4 @@ Control the verbosity of the tag's logging in the browser's developer console.
 
 ## Open Source
 
-The **User Data Collection Tag for GTM Web** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
+The **User Data Collector Tag for GTM Web** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
