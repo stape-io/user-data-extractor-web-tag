@@ -1,5 +1,5 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/user-data-extractor-web-tag'
 versions:
-  - sha: 4210c697f1788461bad76e51848b44b91dc7751d
+  - sha: 16a127a83ae535bf65f427a1ad3831c29172553d
     changeNotes: Initial Release.
