@@ -13,43 +13,43 @@ const setInWindow = require('setInWindow');
 ==============================================================================*/
 
 const scriptUrl = getScriptUrl(data);
-const scriptGlobalFlagName = 'gtm_userDataExtractorScriptLoaded';
+const scriptGlobalFlagName = 'gtm_userDataCollectorScriptLoaded';
 const scriptLoaded = copyFromWindow(scriptGlobalFlagName);
 
 const settings = getScriptSettings(data);
 
 if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
   log({
-    Name: 'UserDataExtractor',
+    Name: 'UserDataCollector',
     Type: 'Message',
-    Message: 'Loading User Data Extractor script.'
+    Message: 'Loading User Data Collector script.'
   });
 
   injectScript(
     scriptUrl,
     () => {
       log({
-        Name: 'UserDataExtractor',
+        Name: 'UserDataCollector',
         Type: 'Message',
-        Message: 'User Data Extractor script loaded succesfully.'
+        Message: 'User Data Collector script loaded succesfully.'
       });
       const flagValue = scriptLoaded || {};
       flagValue[scriptUrl] = true;
       setInWindow(scriptGlobalFlagName, flagValue);
 
       log({
-        Name: 'UserDataExtractor',
+        Name: 'UserDataCollector',
         Type: 'Message',
-        Message: 'User Data Extractor script is already loaded. Running user data extraction.'
+        Message: 'User Data Collector script is already loaded. Running user data collection.'
       });
 
-      runUserDataExtraction(settings);
+      runUserDataCollection(settings);
     },
     () => {
       log({
-        Name: 'UserDataExtractor',
+        Name: 'UserDataCollector',
         Type: 'Message',
-        Message: 'User Data Extractor script failed to load.'
+        Message: 'User Data Collector script failed to load.'
       });
 
       data.gtmOnFailure();
@@ -58,12 +58,12 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
   );
 } else {
   log({
-    Name: 'UserDataExtractor',
+    Name: 'UserDataCollector',
     Type: 'Message',
-    Message: 'User Data Extractor script is already loaded. Running user data extraction.'
+    Message: 'User Data Collector script is already loaded. Running user data collection.'
   });
 
-  runUserDataExtraction(settings);
+  runUserDataCollection(settings);
 }
 
 /*==============================================================================
@@ -75,7 +75,7 @@ function getScriptUrl(data) {
   const scriptUrl =
     getType(data.scriptUrl) === 'string'
       ? data.scriptUrl.replace('${script-version}', scriptVersion)
-      : 'https://stapecdn.com/user-data-extractor/' + scriptVersion + '.js';
+      : 'https://stapecdn.com/udc/' + scriptVersion + '.js';
   return scriptUrl;
 }
 
@@ -87,9 +87,9 @@ function getScriptSettings(data) {
   if (data.phone) settings.extract.phone = data.phone;
   if (data.city) settings.extract.city = data.city;
   if (data.country) settings.extract.country = data.country;
-  if (data.postalCode) settings.extract.postal_code = data.postalCode;
-  if (data.firstName) settings.extract.first_name = data.firstName;
-  if (data.lastName) settings.extract.last_name = data.lastName;
+  if (data.postalCode) settings.extract.postalCode = data.postalCode;
+  if (data.firstName) settings.extract.firstName = data.firstName;
+  if (data.lastName) settings.extract.lastName = data.lastName;
 
   if (data.overrideRootElement && data.overrideRootElementElement) {
     settings.root = data.overrideRootElementElement;
@@ -116,6 +116,15 @@ function getScriptSettings(data) {
     }
   }
 
+  if (data.autoTrackSpecificForms) {
+    settings.autoTrackSpecificForms = {
+      enabled: true
+    };
+    if (getType(data.autoTrackSpecificFormsSelector) === 'string') {
+      settings.autoTrackSpecificForms.formSelector = data.autoTrackSpecificFormsSelector;
+    }
+  }
+
   if (data.saveIntoStorage) {
     settings.saveIntoStorage = {
       enabled: true
@@ -126,15 +135,19 @@ function getScriptSettings(data) {
     }
   }
 
+  if (data.overrideExistingUserData) {
+    settings.overrideExistingUserData = data.overrideExistingUserData;
+  }
+
   return settings;
 }
 
-function runUserDataExtraction(settings) {
-  const userData = callInWindow('extractUserDataAuto', settings);
+function runUserDataCollection(settings) {
+  const userData = callInWindow('collectUserDataAuto', settings);
   log({
-    Name: 'UserDataExtractor',
+    Name: 'UserDataCollector',
     Type: 'Message',
-    Message: 'Extracted User Data: ' + JSON.stringify(userData)
+    Message: 'Collected User Data: ' + JSON.stringify(userData)
   });
 
   data.gtmOnSuccess();

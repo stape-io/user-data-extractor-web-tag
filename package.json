@@ -1,5 +1,5 @@
 {
-  "name": "@stape-io/user-data-extractor",
+  "name": "@stape-io/user-data-collector",
   "version": "1.0.0",
   "main": "src/index.js",
   "type": "module",

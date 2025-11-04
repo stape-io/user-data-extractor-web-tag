@@ -2,9 +2,9 @@ let isSubmitClickListenerAdded = false;
 let isSubmitFormListenerAdded = false;
 
 /**
- * User Data Auto-Extraction Module (DOM Scan)
+ * User Data Auto-Collection Module (DOM Scan)
  *
- * Main entry point to automatically extract specified User Data types from the DOM.
+ * Main entry point to automatically collects the specified User Data types from the DOM.
  *
  * @param {object} options - Configuration for the extraction process.
  * @param {HTMLElement} [options.root=document] - The root element to scan within.
@@ -13,9 +13,9 @@ let isSubmitFormListenerAdded = false;
  * @param {boolean} [options.extract.phone=true] - Extract phone numbers.
  * @param {boolean} [options.extract.city=false] - Extract city names.
  * @param {boolean} [options.extract.country=false] - Extract country codes.
- * @param {boolean} [options.extract.postal_code=false] - Extract postal codes.
- * @param {boolean} [options.extract.first_name=false] - Extract first names.
- * @param {boolean} [options.extract.last_name=false] - Extract last names.
+ * @param {boolean} [options.extract.postalCode=false] - Extract postal codes.
+ * @param {boolean} [options.extract.firstName=false] - Extract first names.
+ * @param {boolean} [options.extract.lastName=false] - Extract last names.
  * @param {boolean} [options.overrideExistingUserData=false] - Determines if the already existing captured user data should be overriden with the newly captured values.
  * @param {object} [options.autoTrackSpecificForms] - Configuration for autotracking <form> HTML element submits.
  * @param {boolean} [options.autoTrackSpecificForms.enabled=false] - If true, automatically adds a listener to re-run extraction on <form> HTML element submits.
@@ -40,7 +40,7 @@ let isSubmitFormListenerAdded = false;
  * @property {string} [first_name] The best candidate found for the user's first name.
  * @property {string} [last_name] The best candidate found for the user's last name.
  */
-export default function extractUserDataAuto(options = {}) {
+export default function collectUserDataAuto(options = {}) {
   try {
     const defaults = {
       root: document,
@@ -49,9 +49,9 @@ export default function extractUserDataAuto(options = {}) {
         phone: true,
         city: false,
         country: false,
-        postal_code: false,
-        first_name: false,
-        last_name: false
+        postalCode: false,
+        firstName: false,
+        lastname: false
       },
       overrideExistingUserData: false,
       pushToDataLayer: {
@@ -92,29 +92,40 @@ export default function extractUserDataAuto(options = {}) {
       }
     };
 
-    addSubmitClickListener(config);
-    addSubmitFormListener(config);
+    const throttleDelay = 1000;
+    const throttledCollect = throttle(
+      (handlerConfig) => collectAndProcessUserData(handlerConfig),
+      throttleDelay
+    );
+    addSubmitClickListener(config, throttledCollect);
+    addSubmitFormListener(config, throttledCollect);
 
-    const newUserData = runUserDataExtraction(config);
-    const userDataFromStorage = getFromStorage(config);
-    const updatedUserData =
-      { ...extractUserDataAuto.userData, ...userDataFromStorage, ...newUserData } || {};
-
-    const userData = (extractUserDataAuto.userData = config.overrideExistingUserData
-      ? newUserData
-      : updatedUserData);
-
-    pushToDataLayer(userData, config);
-    saveIntoStorage(userData, config);
+    const userData = collectAndProcessUserData(config);
 
     return userData;
   } catch (e) {
-    console.error('Error in extractUserDataAuto:', e);
+    console.error('Error in collectUserDataAuto:', e);
     return {};
   }
 }
 
-function runUserDataExtraction(config) {
+function collectAndProcessUserData(config) {
+  const newUserData = runUserDataCollection(config);
+  const userDataFromStorage = getFromStorage(config);
+  const updatedUserData =
+    { ...collectUserDataAuto.userData, ...userDataFromStorage, ...newUserData } || {};
+
+  const userData = (collectUserDataAuto.userData = config.overrideExistingUserData
+    ? newUserData
+    : updatedUserData);
+
+  pushToDataLayer(userData, config);
+  saveIntoStorage(userData, config);
+
+  return userData;
+}
+
+function runUserDataCollection(config) {
   const { root, extract } = config;
 
   const selection = selectOnce(root);
@@ -153,7 +164,7 @@ function runUserDataExtraction(config) {
     }
   }
 
-  if (extract.postal_code) {
+  if (extract.postalCode) {
     const postalCodeCandidates = extractPostalCodes(selection, config);
     const bestCandidate = pickBest(postalCodeCandidates, 'postal_code');
     if (bestCandidate) {
@@ -161,7 +172,7 @@ function runUserDataExtraction(config) {
     }
   }
 
-  if (extract.first_name) {
+  if (extract.firstName) {
     const firstNameCandidates = extractFirstNames(selection, config);
     const bestCandidate = pickBest(firstNameCandidates, 'first_name');
     if (bestCandidate) {
@@ -169,7 +180,7 @@ function runUserDataExtraction(config) {
     }
   }
 
-  if (extract.last_name) {
+  if (extract.lastName) {
     const lastNameCandidates = extractLastNames(selection, config);
     const bestCandidate = pickBest(lastNameCandidates, 'last_name');
     if (bestCandidate) {
@@ -242,7 +253,7 @@ function getFromStorage(config) {
   }
 }
 
-function addSubmitClickListener(config) {
+function addSubmitClickListener(config, throttledCollect) {
   try {
     const {
       autoTrackSpecificClicks: { enabled, buttonClickSelector }
@@ -250,24 +261,21 @@ function addSubmitClickListener(config) {
 
     if (!enabled || isSubmitClickListenerAdded) return;
 
-    document.addEventListener(
-      'click',
-      (event) => {
-        try {
-          const buttonSelector =
-            buttonClickSelector || 'button[type="submit"], input[type="submit"]';
-          const target = event.target;
-          const submitButton = target.closest(buttonSelector);
+    const clickHandler = (event) => {
+      try {
+        const buttonSelector = buttonClickSelector || 'button[type="submit"], input[type="submit"]';
+        const target = event.target;
+        const submitButton = target.closest(buttonSelector);
 
-          if (submitButton) {
-            extractUserDataAuto({ ...config, root: submitButton.form || document });
-          }
-        } catch (e) {
-          console.error('Error in addSubmitClickListener click event handler:', e);
+        if (submitButton) {
+          throttledCollect({ ...config, root: submitButton.form || document });
         }
-      },
-      true
-    );
+      } catch (e) {
+        console.error('Error in addSubmitClickListener click event handler:', e);
+      }
+    };
+
+    document.addEventListener('click', clickHandler, true);
 
     isSubmitClickListenerAdded = true;
   } catch (e) {
@@ -275,7 +283,7 @@ function addSubmitClickListener(config) {
   }
 }
 
-function addSubmitFormListener(config) {
+function addSubmitFormListener(config, throttledCollect) {
   try {
     const {
       autoTrackSpecificForms: { enabled, formSelector }
@@ -283,27 +291,25 @@ function addSubmitFormListener(config) {
 
     if (!enabled || isSubmitFormListenerAdded) return;
 
-    document.addEventListener(
-      'submit',
-      (event) => {
-        try {
-          const formCSSSelector = formSelector || 'form';
-          const target = event.target;
-          const form = target.closest(formCSSSelector);
+    const submitHandler = (event) => {
+      try {
+        const formCSSSelector = formSelector || 'form';
+        const target = event.target;
+        const form = target.closest(formCSSSelector);
 
-          if (form) {
-            extractUserDataAuto({ ...config, root: form || document });
-          }
-        } catch (e) {
-          console.error('Error in addSubmitFormListener click event handler:', e);
+        if (form) {
+          throttledCollect({ ...config, root: form || document });
         }
-      },
-      true
-    );
+      } catch (e) {
+        console.error('Error in addSubmitFormListener submit event handler:', e);
+      }
+    };
 
-    isSubmitClickListenerAdded = true;
+    document.addEventListener('submit', submitHandler, true);
+
+    isSubmitFormListenerAdded = true;
   } catch (e) {
-    console.error('Error in addSubmitClickListener:', e);
+    console.error('Error in addSubmitFormListener:', e);
   }
 }
 
@@ -840,6 +846,19 @@ function isProbablyVisible(el) {
     return false;
   const rect = el.getBoundingClientRect();
   return !!(rect.width > 0 && rect.height > 0);
+}
+
+function throttle(func, limit) {
+  let inThrottle;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
 }
 
 function isEmptyObject(obj) {
