@@ -2,7 +2,7 @@ let isSubmitClickListenerAdded = false;
 let isSubmitFormListenerAdded = false;
 
 /**
- * User Data Auto-Collection Module (DOM Scan)
+ * User Data Auto-Collection Module
  *
  * Main entry point to automatically collects the specified User Data types from the DOM.
  *
