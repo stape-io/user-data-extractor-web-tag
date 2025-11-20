@@ -1,0 +1,19 @@
+{
+  "name": "@stape-io/udc",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "stape.io",
+  "license": "Apache-2.0",
+  "description": "Library that scans the page for common User Data (email, phone etc.) and returns an object containing the collected User Data.",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.8",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.52.4"
+  }
+}
