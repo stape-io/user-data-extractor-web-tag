@@ -12,7 +12,7 @@ export default {
   output: [
     // Dev
     {
-      file: 'dist/user-data-collector.js',
+      file: 'dist/udc.js',
       format: 'iife',
       name: 'collectUserDataAuto',
       exports: 'default',
@@ -20,7 +20,7 @@ export default {
     },
     // Prod
     {
-      file: 'dist/user-data-collector.min.js',
+      file: 'dist/udc.min.js',
       format: 'iife',
       name: 'collectUserDataAuto',
       exports: 'default',

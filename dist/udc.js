@@ -1,4 +1,4 @@
-/*! @stape-io/user-data-collector v1.0.0 | 2025-11-04T14:56:54.137Z */
+/*! @stape-io/udc v1.0.0 | 2025-11-20T15:19:52.435Z */
 var collectUserDataAuto = (function () {
   'use strict';
 
