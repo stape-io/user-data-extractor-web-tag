@@ -72,3 +72,6 @@ Control the verbosity of the tag's logging in the browser's developer console.
 ## Open Source
 
 The **User Data Collector Tag for GTM Web** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
+
+### GTM Gallery Status
+🟢 [Listed](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/user-data-extractor-web-tag)
