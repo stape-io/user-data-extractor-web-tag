@@ -1,5 +1,7 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/user-data-extractor-web-tag'
 versions:
+  - sha: 14095de082656330ace959594ef4310d1c9f5579
+    changeNotes: Fail the tag when the extractor function is missing after script load.
   - sha: 16a127a83ae535bf65f427a1ad3831c29172553d
     changeNotes: Initial Release.
