@@ -1,5 +1,3 @@
-/// <reference path="./web-gtm-sandboxed-apis.d.ts" />
-
 const callInWindow = require('callInWindow');
 const copyFromWindow = require('copyFromWindow');
 const getContainerVersion = require('getContainerVersion');
@@ -28,6 +26,9 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
   injectScript(
     scriptUrl,
     () => {
+      const collectUserDataAuto = copyFromWindow('collectUserDataAuto');
+      if (!collectUserDataAuto) return onScriptLoadFailure(data);
+
       log({
         Name: 'UserDataCollector',
         Type: 'Message',
@@ -36,24 +37,9 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
       const flagValue = scriptLoaded || {};
       flagValue[scriptUrl] = true;
       setInWindow(scriptGlobalFlagName, flagValue);
-
-      log({
-        Name: 'UserDataCollector',
-        Type: 'Message',
-        Message: 'User Data Collector script is already loaded. Running user data collection.'
-      });
-
       runUserDataCollection(settings);
     },
-    () => {
-      log({
-        Name: 'UserDataCollector',
-        Type: 'Message',
-        Message: 'User Data Collector script failed to load.'
-      });
-
-      data.gtmOnFailure();
-    },
+    () => onScriptLoadFailure(data),
     scriptUrl
   );
 } else {
@@ -140,6 +126,16 @@ function getScriptSettings(data) {
   }
 
   return settings;
+}
+
+function onScriptLoadFailure(data) {
+  log({
+    Name: 'UserDataCollector',
+    Type: 'Message',
+    Message: 'User Data Collector script failed to load.'
+  });
+
+  data.gtmOnFailure();
 }
 
 function runUserDataCollection(settings) {

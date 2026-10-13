@@ -23,7 +23,7 @@ ___INFO___
   "brand": {
     "id": "brand_dummy",
     "displayName": "stape.io",
-    "thumbnail": "data:image/png;base64,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"
+    "thumbnail": "data:image/png;base64,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"
   },
   "description": "This tag automatically reads user PII (email, phone, name) from a webpage\u0027s DOM. It intelligently identifies form fields, normalizes data, and can push results to a dataLayer or browser storage.",
   "containerContexts": [
@@ -351,8 +351,6 @@ ___TEMPLATE_PARAMETERS___
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
-/// <reference path="./web-gtm-sandboxed-apis.d.ts" />
-
 const callInWindow = require('callInWindow');
 const copyFromWindow = require('copyFromWindow');
 const getContainerVersion = require('getContainerVersion');
@@ -381,6 +379,9 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
   injectScript(
     scriptUrl,
     () => {
+      const collectUserDataAuto = copyFromWindow('collectUserDataAuto');
+      if (!collectUserDataAuto) return onScriptLoadFailure(data);
+
       log({
         Name: 'UserDataCollector',
         Type: 'Message',
@@ -389,24 +390,9 @@ if (!scriptLoaded || !scriptLoaded[scriptUrl]) {
       const flagValue = scriptLoaded || {};
       flagValue[scriptUrl] = true;
       setInWindow(scriptGlobalFlagName, flagValue);
-
-      log({
-        Name: 'UserDataCollector',
-        Type: 'Message',
-        Message: 'User Data Collector script is already loaded. Running user data collection.'
-      });
-
       runUserDataCollection(settings);
     },
-    () => {
-      log({
-        Name: 'UserDataCollector',
-        Type: 'Message',
-        Message: 'User Data Collector script failed to load.'
-      });
-
-      data.gtmOnFailure();
-    },
+    () => onScriptLoadFailure(data),
     scriptUrl
   );
 } else {
@@ -493,6 +479,16 @@ function getScriptSettings(data) {
   }
 
   return settings;
+}
+
+function onScriptLoadFailure(data) {
+  log({
+    Name: 'UserDataCollector',
+    Type: 'Message',
+    Message: 'User Data Collector script failed to load.'
+  });
+
+  data.gtmOnFailure();
 }
 
 function runUserDataCollection(settings) {
@@ -619,7 +615,7 @@ ___WEB_PERMISSIONS___
                   },
                   {
                     "type": 8,
-                    "boolean": false
+                    "boolean": true
                   },
                   {
                     "type": 8,
@@ -687,10 +683,6 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "https://stapecdn.com/*"
-              },
-              {
-                "type": 1,
-                "string": "https://cdn.stape.io/*"
               }
             ]
           }
@@ -733,17 +725,35 @@ scenarios:
     assertApi('callInWindow').wasNotCalled();
     assertApi('gtmOnFailure').wasCalled();
     assertApi('gtmOnSuccess').wasNotCalled();
+- name: Script is NOT loaded, the template loads it but the extractor function is
+    not defined in window, failure handler should be called
+  code: |-
+    setMockData();
+
+    mock('copyFromWindow', (key) => {
+      if (key === scriptGlobalFlagName) return undefined;
+      if (key === extractorFunctionName) return undefined;
+    });
+
+    mock('injectScript', (scriptUrl, successHandler, failureHandler, cacheToken) => {
+      successHandler();
+    });
+
+    runCode(mockData);
+
+    assertApi('injectScript').wasCalled();
+    assertApi('setInWindow').wasNotCalled();
+    assertApi('callInWindow').wasNotCalled();
+    assertApi('gtmOnFailure').wasCalled();
+    assertApi('gtmOnSuccess').wasNotCalled();
 - name: Script is NOT loaded, the template should load it successfully, extractor
     function should be called
   code: |-
-    setMockData({
-      autoTrackSpecificClicks: { enabled: true, autoTrackSpecificClicksSelector: 'a.submit' }
-    });
+    setMockData();
 
     mock('copyFromWindow', (key) => {
-      if (key === scriptGlobalFlagName) {
-        return undefined;
-      }
+      if (key === scriptGlobalFlagName) return undefined;
+      if (key === extractorFunctionName) return () => {};
     });
 
     mock('injectScript', (scriptUrl, successHandler, failureHandler, cacheToken) => {
@@ -777,7 +787,34 @@ scenarios:
     const flagValue = {};
     flagValue[mockData.scriptUrl] = true;
     assertApi('setInWindow').wasCalledWith(scriptGlobalFlagName, flagValue);
+    assertApi('callInWindow').wasCalled();
 
+    assertApi('gtmOnFailure').wasNotCalled();
+    assertApi('gtmOnSuccess').wasCalled();
+- name: Script is NOT loaded but another script URL is, the template should load it
+    and keep the existing loaded flags
+  code: |-
+    setMockData();
+
+    const otherScriptUrl = 'https://stapecdn.com/udc/v0.js';
+
+    mock('copyFromWindow', (key) => {
+      if (key === scriptGlobalFlagName) {
+        const flagValue = {};
+        flagValue[otherScriptUrl] = true;
+        return flagValue;
+      }
+      if (key === extractorFunctionName) return () => {};
+    });
+
+    runCode(mockData);
+
+    const expectedFlagValue = {};
+    expectedFlagValue[otherScriptUrl] = true;
+    expectedFlagValue[mockData.scriptUrl] = true;
+    assertApi('injectScript').wasCalled();
+    assertApi('setInWindow').wasCalledWith(scriptGlobalFlagName, expectedFlagValue);
+    assertApi('callInWindow').wasCalled();
     assertApi('gtmOnFailure').wasNotCalled();
     assertApi('gtmOnSuccess').wasCalled();
 - name: Script is loaded, the template should not attempt to load it, extractor function
@@ -815,61 +852,248 @@ scenarios:
 
     assertApi('injectScript').wasNotCalled();
     assertApi('setInWindow').wasNotCalled();
+    assertApi('callInWindow').wasCalled();
     assertApi('gtmOnFailure').wasNotCalled();
     assertApi('gtmOnSuccess').wasCalled();
+- name: Script URL should fall back to the default or have the script version placeholder
+    replaced
+  code: |-
+    const originalMockData = setMockData();
+
+    [
+      { scriptUrl: undefined, expectedScriptUrl: 'https://stapecdn.com/udc/v1.js' },
+      {
+        scriptUrl: 'https://stapecdn.com/udc/${script-version}.js',
+        expectedScriptUrl: 'https://stapecdn.com/udc/v1.js'
+      },
+      {
+        scriptUrl: 'https://stapecdn.com/custom/${script-version}.min.js',
+        expectedScriptUrl: 'https://stapecdn.com/custom/v1.min.js'
+      }
+    ].forEach((scenario) => {
+      const copyMockData = JSON.parse(JSON.stringify(originalMockData));
+      copyMockData.scriptUrl = scenario.scriptUrl;
+
+      mock('injectScript', (scriptUrl, successHandler, failureHandler, cacheToken) => {
+        assertThat(scriptUrl).isEqualTo(scenario.expectedScriptUrl);
+        assertThat(cacheToken).isEqualTo(scenario.expectedScriptUrl);
+        successHandler();
+      });
+
+      runCode(copyMockData);
+
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
+- name: Settings should only include the enabled options and the optional fields that
+    are set
+  code: |-
+    [
+      {
+        mockData: {
+          email: false,
+          phone: false,
+          city: false,
+          postalCode: false,
+          country: false,
+          firstName: false,
+          lastName: false,
+          pushToDataLayer: false,
+          saveIntoStorage: false,
+          autoTrackSpecificClicks: false,
+          autoTrackSpecificForms: false,
+          overrideRootElement: false,
+          overrideExistingUserData: false
+        },
+        expectedSettings: { extract: {} }
+      },
+      {
+        mockData: {
+          phone: false,
+          city: false,
+          postalCode: false,
+          country: false,
+          firstName: false,
+          lastName: false,
+          pushToDataLayerEventName: undefined,
+          pushToDataLayerDataLayerName: undefined,
+          saveIntoStorageType: undefined,
+          saveIntoStorageKey: undefined,
+          autoTrackSpecificClicksSelector: undefined,
+          autoTrackSpecificFormsSelector: undefined,
+          overrideRootElementElement: undefined,
+          overrideExistingUserData: false
+        },
+        expectedSettings: {
+          extract: { email: true },
+          pushToDataLayer: { enabled: true },
+          autoTrackSpecificClicks: { enabled: true },
+          autoTrackSpecificForms: { enabled: true },
+          saveIntoStorage: { enabled: true }
+        }
+      }
+    ].forEach((scenario) => {
+      const copyMockData = JSON.parse(JSON.stringify(setMockData()));
+      mergeObj(copyMockData, scenario.mockData);
+
+      mock('callInWindow', (name, settings) => {
+        assertThat(name).isEqualTo(extractorFunctionName);
+        assertThat(settings).isEqualTo(scenario.expectedSettings);
+      });
+
+      runCode(copyMockData);
+
+      assertApi('callInWindow').wasCalled();
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
 - name: '[Logs] Should log to console'
-  code: "const originalMockData = setMockData();\n\n[\n  // if the 'Always log to\
-    \ console' option is selected\n  { mockData: { logType: 'always' }, expectedDebugMode:\
-    \ true },\n  // if the 'Log during debug and preview' option is selected AND is\
-    \ on preview mode\n  { mockData: { logType: 'debug' }, expectedDebugMode: true\
-    \ },\n].forEach(scenario => {\n  const copyMockData = JSON.parse(JSON.stringify(originalMockData));\n\
-    \  mergeObj(copyMockData, scenario.mockData);\n  \n  mock('getContainerVersion',\
-    \ () => {\n    return {\n      debugMode: scenario.expectedDebugMode\n    };\n\
-    \  }); \n\n  runCode(copyMockData);\n  \n  assertApi('logToConsole').wasCalled();\n\
-    \  assertApi('gtmOnSuccess').wasCalled();\n  assertApi('gtmOnFailure').wasNotCalled();\n\
-    });"
+  code: |-
+    const originalMockData = setMockData();
+
+    [
+      // if the 'Always log to console' option is selected
+      { mockData: { logType: 'always' }, expectedDebugMode: true },
+      // if the 'Log during debug and preview' option is selected AND is on preview mode
+      { mockData: { logType: 'debug' }, expectedDebugMode: true },
+    ].forEach(scenario => {
+      const copyMockData = JSON.parse(JSON.stringify(originalMockData));
+      mergeObj(copyMockData, scenario.mockData);
+
+      mock('getContainerVersion', () => {
+        return {
+          debugMode: scenario.expectedDebugMode
+        };
+      });
+
+      runCode(copyMockData);
+
+      assertApi('logToConsole').wasCalled();
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
 - name: '[Logs] Should NOT log to console'
-  code: "const originalMockData = setMockData();\n\n[\n  // if the 'Log during debug\
-    \ and preview' option is selected AND is NOT on preview mode\n  { mockData: {\
-    \ logType: 'debug' }, expectedDebugMode: false },\n  // if the 'Do not log' option\
-    \ is selected\n  { mockData: { logType: 'no' }, expectedDebugMode: undefined },\n\
-    ].forEach(scenario => {\n  const copyMockData = JSON.parse(JSON.stringify(originalMockData));\n\
-    \  mergeObj(copyMockData, scenario.mockData);\n  \n  mock('getContainerVersion',\
-    \ () => {\n    return {\n      debugMode: scenario.expectedDebugMode\n    };\n\
-    \  });\n  \n  runCode(copyMockData);\n\n  assertApi('logToConsole').wasNotCalled();\n\
-    \  assertApi('gtmOnSuccess').wasCalled();\n  assertApi('gtmOnFailure').wasNotCalled();\n\
-    });"
-setup: "const JSON = require('JSON');\nconst Object = require('Object');\n\nfunction\
-  \ mergeObj(target, source) {\n  for (const key in source) {\n    if (source.hasOwnProperty(key))\
-  \ target[key] = source[key];\n  }\n  return target;\n}\n\nconst scriptGlobalFlagName\
-  \ = 'gtm_userDataCollectorScriptLoaded';\nconst extractorFunctionName = 'collectUserDataAuto';\n\
-  const expectedFormattedSettings = {\n  extract: { email: true, phone: true, city:\
-  \ true, country: true, postalCode: true, firstName: true, lastName: true },\n  root:\
-  \ 'test',\n  pushToDataLayer: {\n    enabled: true,\n    event: 'user_data_detected',\n\
-  \    dataLayerName: 'dataLayer'\n  },\n  autoTrackSpecificClicks: { enabled: true,\
-  \ buttonClickSelector: 'a.submit' },\n  autoTrackSpecificForms: { enabled: true,\
-  \ formSelector: 'form' },\n  saveIntoStorage: { enabled: true, type: 'session',\
-  \ key: 'gtm_user_data' },\n  overrideExistingUserData: true\n};\n\nconst mockData\
-  \ = {};\n\nconst setMockData = (objToBeMerged) => {\n  const base = {\n    email:\
-  \ true,\n    phone: true,\n    city: true,\n    postalCode: true,\n    country:\
-  \ true,\n    firstName: true,\n    lastName: true,\n    pushToDataLayer: true,\n\
-  \    pushToDataLayerDataLayerName: 'dataLayer',\n    pushToDataLayerEventName: 'user_data_detected',\n\
-  \    saveIntoStorage: true,\n    saveIntoStorageType: 'session',\n    saveIntoStorageKey:\
-  \ 'gtm_user_data',\n    autoTrackSpecificClicks: true,\n    autoTrackSpecificClicksSelector:\
-  \ 'a.submit',\n    autoTrackSpecificForms: true,\n    autoTrackSpecificFormsSelector:\
-  \ 'form',\n    overrideRootElement: true,\n    overrideRootElementElement: 'test',\n\
-  \    overrideExistingUserData: true,\n    scriptUrl: 'https://stapecdn.com/udc/v1.js',\n\
-  \    logType: 'debug'\n  };\n  \n  mergeObj(base, objToBeMerged || {});\n  mergeObj(mockData,\
-  \ base);\n  return mockData;\n};\n\nmock('copyFromWindow', (key) => {\n  if (key\
-  \ === scriptGlobalFlagName) {\n    return { };\n  }\n});\n\nmock('injectScript',\
-  \ (scriptUrl, successHandler, failureHandler, cacheToken) => {\n  successHandler();\n\
-  });\n\nmock('callInWindow', () => {\n  const name = arguments[0];\n  if (name ===\
-  \ extractorFunctionName) {\n    return {\n      email: 'email',\n      phone: 'phone',\n\
-  \      city: 'city',\n      postal_code: 'postal_code',\n      country: 'country',\n\
-  \      first_name: 'first_name',\n      last_name: 'last_name'\n    };\n  }\n});"
+  code: |-
+    const originalMockData = setMockData();
+
+    [
+      // if the 'Log during debug and preview' option is selected AND is NOT on preview mode
+      { mockData: { logType: 'debug' }, expectedDebugMode: false },
+      // if the 'Do not log' option is selected
+      { mockData: { logType: 'no' }, expectedDebugMode: undefined },
+    ].forEach(scenario => {
+      const copyMockData = JSON.parse(JSON.stringify(originalMockData));
+      mergeObj(copyMockData, scenario.mockData);
+
+      mock('getContainerVersion', () => {
+        return {
+          debugMode: scenario.expectedDebugMode
+        };
+      });
+
+      runCode(copyMockData);
+
+      assertApi('logToConsole').wasNotCalled();
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
+setup: |-
+  const JSON = require('JSON');
+  const Object = require('Object');
+
+  function mergeObj(target, source) {
+    for (const key in source) {
+      if (source.hasOwnProperty(key)) target[key] = source[key];
+    }
+    return target;
+  }
+
+  const scriptGlobalFlagName = 'gtm_userDataCollectorScriptLoaded';
+  const extractorFunctionName = 'collectUserDataAuto';
+  const expectedFormattedSettings = {
+    extract: { email: true, phone: true, city: true, country: true, postalCode: true, firstName: true, lastName: true },
+    root: 'test',
+    pushToDataLayer: {
+      enabled: true,
+      event: 'user_data_detected',
+      dataLayerName: 'dataLayer'
+    },
+    autoTrackSpecificClicks: { enabled: true, buttonClickSelector: 'a.submit' },
+    autoTrackSpecificForms: { enabled: true, formSelector: 'form' },
+    saveIntoStorage: { enabled: true, type: 'session', key: 'gtm_user_data' },
+    overrideExistingUserData: true
+  };
+
+  const mockData = {};
+
+  const setMockData = (objToBeMerged) => {
+    const base = {
+      email: true,
+      phone: true,
+      city: true,
+      postalCode: true,
+      country: true,
+      firstName: true,
+      lastName: true,
+      pushToDataLayer: true,
+      pushToDataLayerDataLayerName: 'dataLayer',
+      pushToDataLayerEventName: 'user_data_detected',
+      saveIntoStorage: true,
+      saveIntoStorageType: 'session',
+      saveIntoStorageKey: 'gtm_user_data',
+      autoTrackSpecificClicks: true,
+      autoTrackSpecificClicksSelector: 'a.submit',
+      autoTrackSpecificForms: true,
+      autoTrackSpecificFormsSelector: 'form',
+      overrideRootElement: true,
+      overrideRootElementElement: 'test',
+      overrideExistingUserData: true,
+      scriptUrl: 'https://stapecdn.com/udc/v1.js',
+      logType: 'debug'
+    };
+
+    mergeObj(base, objToBeMerged || {});
+    mergeObj(mockData, base);
+    return mockData;
+  };
+
+  mock('copyFromWindow', (key) => {
+    if (key === scriptGlobalFlagName) {
+      return { };
+    }
+    if (key === extractorFunctionName) {
+      return () => {};
+    }
+  });
+
+  mock('injectScript', (scriptUrl, successHandler, failureHandler, cacheToken) => {
+    successHandler();
+  });
+
+  mock('callInWindow', () => {
+    const name = arguments[0];
+    if (name === extractorFunctionName) {
+      return {
+        email: 'email',
+        phone: 'phone',
+        city: 'city',
+        postal_code: 'postal_code',
+        country: 'country',
+        first_name: 'first_name',
+        last_name: 'last_name'
+      };
+    }
+  });
 
 
 ___NOTES___
+
+2026-10-09 - Change Notes:
+  - Call gtmOnFailure when the script loads but collectUserDataAuto is not defined in window, instead of carrying on as if collection succeeded (adds read access to collectUserDataAuto)
+  - Move script load failure handling into a shared onScriptLoadFailure function used by both failure paths
+  - Remove the misleading "already loaded" log that was emitted right after a fresh script load
+  - Restrict script injection permission to https://stapecdn.com/* and update the brand thumbnail
+  - Add tests for the missing extractor function, keeping existing loaded-script flags, script URL resolution and settings building
 
 Created on 26.2.2024 14.09.01
 
